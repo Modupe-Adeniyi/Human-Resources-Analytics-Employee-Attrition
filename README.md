@@ -15,6 +15,11 @@
 
 This project aims to conduct a comprehensive investigation into the dataset to reveal the factors that contribute to employee attrition. By analyzing various aspects of the available data, our objective is to assist the company in comprehending attrition within their organization. We aim to formulate data-driven recommendations focused on minimizing and preventing future employee attrition, thereby reducing turnover costs and enhancing employee retention over an extended period.
 
+
+
+https://github.com/Modupe-Adeniyi/Human-Resources-Analytics-Employee-Attrition/assets/151841781/0d501d74-10f2-4527-9a9d-7e4097088464
+
+
 ## Data Sources
 
 The primary dataset utilized for this analysis is the "HR_Employee_Attrition.csv" obtained from Kaggle. This dataset contains extensive information about employees, including age, gender, department, job role, educational field, salary, attrition, and various other details.
