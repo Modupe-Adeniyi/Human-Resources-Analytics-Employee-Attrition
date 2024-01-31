@@ -20,6 +20,11 @@ This project aims to conduct a comprehensive investigation into the dataset to r
 https://github.com/Modupe-Adeniyi/Human-Resources-Analytics-Employee-Attrition/assets/151841781/0d501d74-10f2-4527-9a9d-7e4097088464
 
 
+
+
+https://github.com/Modupe-Adeniyi/Human-Resources-Analytics-Employee-Attrition/assets/151841781/6980188f-06b2-4d35-9484-2e7453310651
+
+
 ## Data Sources
 
 The primary dataset utilized for this analysis is the "HR_Employee_Attrition.csv" obtained from Kaggle. This dataset contains extensive information about employees, including age, gender, department, job role, educational field, salary, attrition, and various other details.
