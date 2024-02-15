@@ -47,20 +47,25 @@ During the initial preparation phase, I executed the following activities:
 ## Data Analysis
 Created MYSQL queries to analyze the dataset and extract insights. Some of the generated queries include:
 
-- Total employees
+1. Total employees
+  ``` sql
 
 SELECT
 count(EmployeeNumber) as Total_Employees
 FROM project.`employee attrition`;
+```
 
-- Total Male employees
+2. Total Male employees
+``` sql
 
 SELECT
 count(Gender) as Total_Male_Employees
 FROM project.`employee attrition`
 where Gender = "Male";
+```
 
-- Percentage of male employees
+3. Percentage of male employees
+``` sql
 
 SELECT
 round(
@@ -70,15 +75,19 @@ FROM project.`employee attrition`
 where Gender = "Male") / (SELECT
 count(EmployeeNumber) as Total_Employees
 FROM project.`employee attrition`) * 100, 0) as Male_Percentage;
+```
 
-- Total Female employees
+4. Total Female employees
+``` sql
 
 SELECT
 count(Gender) as Total_Female_Employees
 FROM project.`employee attrition`
 where Gender = "Female";
+```
 
-- Percentage of female employees
+5. Percentage of female employees
+``` sql
 
 SELECT
 round(
@@ -88,14 +97,18 @@ FROM project.`employee attrition`
 where Gender = "Female") / (SELECT
 count(EmployeeNumber) as Total_Employees
 FROM project.`employee attrition`) * 100, 0) as Female_Percentage;
+```
 
-- Average Age
+6. Average Age
+``` sql
 
 SELECT 
 round(avg(Age), 0) as Average_Age
 FROM project.`employee attrition`;
+```
 
-- Employee between ages 30 - 50
+7. Employee between ages 30 - 50
+ ``` sql
 
 SELECT 
 Department,
@@ -105,23 +118,29 @@ MonthlyIncome,
 age
 FROM project.`employee attrition`
 where age >= 30 and age <=50;
+```
 
-- Average salary by department
+8. Average salary by department
+``` sql
 
 SELECT 
 Department,
 avg(MonthlyIncome) as Avg_monthly_income
 FROM project.`employee attrition`
 group by Department;
+```
 
-- Number of employee by attrition
+9. Number of employee by attrition
+``` sql
 
 SELECT
 count(*) as Attrition_Count
 FROM project.`employee attrition`
 where Attrition = "yes";
+```
 
-- Number of attrition by Gender
+10. Number of attrition by Gender
+```sql
 
 SELECT 
 Gender,
@@ -129,8 +148,10 @@ count(Attrition) as Attrition_by_Gender
 FROM project.`employee attrition`
 where Attrition = "yes"
 group by Gender;
+```
 
-- Number of attrition by Department
+11. Number of attrition by Department
+``` sql
 
 SELECT
 Department,
@@ -138,65 +159,82 @@ count(*) as Attrition_Count
 FROM project.`employee attrition`
 where Attrition = "yes"
 group by Department;
+```
 
-- Unique job role
+12. Unique job role
+``` sql
 
 SELECT
 distinct JobRole
 FROM project.`employee attrition`;
+```
 
-- Total monthly income by gender
+13. Total monthly income by gender
+``` sql
 
 SELECT
 Gender,
 sum(MonthlyIncome) as Gender_total_income
 FROM project.`employee attrition`
 group by Gender;
+```
 
-- Highest monthly income
+14. Highest monthly income
+``` sql
 
 SELECT
 max(MonthlyIncome) as Highest_monthly_income
 FROM project.`employee attrition`;
+```
 
-- Highest monthly income by department
+15. Highest monthly income by department
+``` sql
 
 SELECT
 Department,
 max(MonthlyIncome) as Highest_monthly_income
 FROM project.`employee attrition`
 group by Department;
+```
 
-- Employee details with the highest monthly income
+16. Employee details with the highest monthly income
+``` sql
 
 SELECT *
 FROM project.`employee attrition`
 order by MonthlyIncome desc
 limit 1;
+```
 
-- Employees with the company for more than 10 years
-
+17. Employees with the company for more than 10 years
+``` sql
 SELECT *
 FROM project.`employee attrition`
 where YearsAtCompany >= 10;
+```
 
-- Average distance from home for employees in each department
+18. Average distance from home for employees in each department
+``` sql
 
 SELECT 
 Department,
 avg(DistanceFromHome) as Avg_distance_from_home
 FROM project.`employee attrition`
 group by Department;
+```
 
-- Number of employee in each education field
+19. Number of employee in each education field
+``` sql
 
 SELECT 
 EducationField,
 count(*) as Total
 FROM project.`employee attrition`
 group by EducationField;
+```
 
-- Number of employee in each education field by attrition
+20. Number of employee in each education field by attrition
+``` sql
 
 SELECT 
 EducationField,
@@ -204,8 +242,10 @@ count(*) as Total
 FROM project.`employee attrition`
 where Attrition = "yes"
 group by EducationField;
+```
 
-- Average total working years for employee with high environmental satisfaction
+21. Average total working years for employee with high environmental satisfaction
+``` sql
 
 SELECT
 avg(TotalWorkingYears) as Total_Avg
@@ -213,8 +253,10 @@ FROM project.`employee attrition`
 where EnvironmentSatisfaction = (SELECT
 max(EnvironmentSatisfaction)
 FROM project.`employee attrition`);
+```
 
-- Employees with the same educational field who has been in the company for more than 5 years
+22. Employees with the same educational field who has been in the company for more than 5 years
+``` sql
 
 SELECT e1.EmployeeNumber, 
 e1.age,
@@ -230,8 +272,10 @@ JOIN (
     GROUP BY   EducationField
 ) e2 ON e1.EducationField = e2.EducationField
    where YearsAtCompany  > 5;
+```
    
- -   Departments where the average distance from  home is greater than the overall distance
+ 23.   Departments where the average distance from  home is greater than the overall distance
+``` sql
 
 SELECT 
 Department,
@@ -245,9 +289,10 @@ having  Avg_distance_by_Dept>
 (SELECT 
 avg(DistanceFromHome) 
   FROM project.`employee attrition`);
+```
 
-- Employee who experienced atttrition and the  average total working years for this group
-
+24. Employee who experienced atttrition and the  average total working years for this group
+``` sql
 SELECT 
 EmployeeNumber,
 Department,
@@ -259,8 +304,10 @@ FROM project.`employee attrition`
 where Attrition = "yes") Attrition_Avg_workng_year
 FROM project.`employee attrition`
 where Attrition = "yes";
+```
 
-- Employee with the lowest environmental satisfaction and their marital status.
+25. Employee with the lowest environmental satisfaction and their marital status.
+``` sql
 
 SELECT
 EmployeeNumber,
@@ -271,12 +318,15 @@ where EnvironmentSatisfaction =
 (SELECT 
 min(EnvironmentSatisfaction)
 FROM project.`employee attrition`);
+```
 
-- Employees rank base on monthly income within each departmnt
+26. Employees rank base on monthly income within each departmnt
+``` sql
 
 SELECT 
 EmployeeNumber, department, MonthlyIncome, rank() over (partition by department order by MonthlyIncome desc) as rank_dept
 FROM project.`employee attrition`;
+```
 
 
 
